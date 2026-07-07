@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #6366f1;
+  --font-sans: system-ui, -apple-system, 'Noto Sans TC', sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background-color: #f9fafb;
+  overscroll-behavior-y: none;
+}
