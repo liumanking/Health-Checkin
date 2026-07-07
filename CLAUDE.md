@@ -58,4 +58,4 @@
 - `npm run test` — Vitest 單元測試
 - `npm run build` — typecheck + production build（含 PWA SW）
 
-## 當前階段：P0（骨架）已完成，待 Miles 驗收後進入 P1
+## 當前階段：P1（每天可用）已完成，待 Miles 驗收後進入 P2

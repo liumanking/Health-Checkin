@@ -1,5 +1,5 @@
 import type { ZodType } from 'zod';
-import type { DomainEvent } from '@/core/event-bus/types';
+import type { AnyEvent } from '@/core/event-bus/types';
 
 /** 稽核草稿：pipeline 統一寫入 AuditLog（鐵律：每個 Command 都要寫 AuditLog）。 */
 export interface AuditDraft {
@@ -12,7 +12,8 @@ export interface AuditDraft {
 
 export interface CommandOutcome<TOutput> {
   output: TOutput;
-  events?: DomainEvent[];
+  /** Domain / Application 事件皆可（pipeline 統一 emit）。 */
+  events?: AnyEvent[];
   audits?: AuditDraft[];
 }
 

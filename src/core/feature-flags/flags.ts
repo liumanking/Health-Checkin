@@ -3,8 +3,8 @@
  * P0 只有骨架，所有功能模組先關閉。
  */
 export const featureFlags = {
-  today: false, // P1
-  habitEditor: false, // P1
+  today: true, // P1 ✅
+  habitEditor: true, // P1 ✅
   timer: false, // P2
   stats: false, // P3
   history: false, // P4
