@@ -3,3 +3,7 @@ export * from './habit-repo';
 export * from './log-repo';
 export * from './timer-repo';
 export * from './misc-repos';
+export * from './category-repo';
+export * from './tag-repo';
+export * from './habit-tag-repo';
+export * from './reminder-repo';

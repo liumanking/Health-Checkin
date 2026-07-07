@@ -58,4 +58,4 @@
 - `npm run test` — Vitest 單元測試
 - `npm run build` — typecheck + production build（含 PWA SW）
 
-## 當前階段：P1（每天可用）已完成，待 Miles 驗收後進入 P2
+## 當前階段：設計書 P0~P8 主線全數完成。效能優化：路由 code-split 已做（Recharts 拆到 Stats 專屬 chunk，首屏 bundle 1010KB→484KB）；DailySummary/WeeklySummary 物化按 Miles 決定暫緩（無實際慢的問題前不做）。之後是 Phase 2（雲端/AI），待 Miles 決定

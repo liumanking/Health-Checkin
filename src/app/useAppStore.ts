@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { ensureDefaultMemberCommand } from '@/application/commands/EnsureDefaultMemberCommand';
 import { dispatch } from '@/application/pipeline/commandPipeline';
 import { logger } from '@/core/logger/logger';
+import { startReminderScheduler } from '@/services/notification/reminder-scheduler';
+import { startBadgeService } from '@/services/pwa/badge-service';
 
 interface AppStore {
   /** 目前成員（P1：預設成員；多成員為 Phase 2）。 */
@@ -19,6 +21,8 @@ export const useAppStore = create<AppStore>((set, get) => ({
     const result = await dispatch(ensureDefaultMemberCommand, {});
     if (result.ok) {
       set({ memberId: result.value });
+      startReminderScheduler(result.value);
+      startBadgeService(result.value);
     } else {
       logger.error('app init failed', { error: result.error.message });
       set({ initError: true });

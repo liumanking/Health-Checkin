@@ -13,6 +13,7 @@ import { Card } from '@/design-system/components/Card';
 import { Input } from '@/design-system/components/Input';
 import { Skeleton } from '@/design-system/components/Skeleton';
 import { showToast } from '@/design-system/components/Toast';
+import { ReminderSection } from './ReminderSection';
 
 const EMOJI_PRESETS = ['💧', '🏃', '📖', '🧘', '💪', '😴', '🥗', '🚶', '🦷', '☀️', '✍️', '🎯'];
 const COLOR_PRESETS = ['#6366f1', '#ef4444', '#f59e0b', '#22c55e', '#06b6d4', '#8b5cf6', '#ec4899', '#64748b'];
@@ -342,6 +343,8 @@ export function HabitEditorPage() {
               />
             </div>
           </Card>
+
+          {id && memberId && <ReminderSection habitId={id} memberId={memberId} />}
 
           <Button type="submit" block disabled={saving}>
             {saving ? '儲存中…' : isEdit ? '儲存變更' : '建立習慣'}

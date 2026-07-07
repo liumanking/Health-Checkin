@@ -99,8 +99,8 @@ export function HabitCard({ item, onRecord, onOpenEntry }: Props) {
           <Button
             variant="secondary"
             disabled={!isEnabled('timer')}
-            aria-label="計時（P2 推出）"
-            title="計時功能將於 P2 推出"
+            aria-label={`計時 ${habit.name}`}
+            onClick={() => navigate(`/timer/${habit.id}`)}
           >
             <Play size={18} aria-hidden />
           </Button>

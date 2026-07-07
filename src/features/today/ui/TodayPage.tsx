@@ -1,16 +1,16 @@
 import { format } from 'date-fns';
 import { zhTW } from 'date-fns/locale';
-import { Plus } from 'lucide-react';
+import { History, Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { TodayItem } from '@/application/queries/GetTodayListQuery';
 import { useAppStore } from '@/app/useAppStore';
 import { InstallBanner } from '@/app/InstallBanner';
+import { AmountEntrySheet } from '@/design-system/components/AmountEntrySheet';
 import { Card } from '@/design-system/components/Card';
 import { Skeleton } from '@/design-system/components/Skeleton';
 import { useTodayStore } from '../application/useTodayStore';
 import { HabitCard } from './HabitCard';
-import { QuickActions } from './QuickActions';
 
 export function TodayPage() {
   const navigate = useNavigate();
@@ -34,14 +34,24 @@ export function TodayPage() {
             {items.length > 0 && ` · 完成 ${doneCount}/${items.length}`}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => navigate('/habit/new')}
-          aria-label="新增習慣"
-          className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-indigo-500 text-white shadow-sm active:bg-indigo-600"
-        >
-          <Plus size={22} aria-hidden />
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => navigate('/history')}
+            aria-label="補登"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-gray-500 active:bg-gray-100"
+          >
+            <History size={22} aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate('/habit/new')}
+            aria-label="新增習慣"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-indigo-500 text-white shadow-sm active:bg-indigo-600"
+          >
+            <Plus size={22} aria-hidden />
+          </button>
+        </div>
       </header>
 
       <InstallBanner />
@@ -58,7 +68,14 @@ export function TodayPage() {
             🌱
           </p>
           <p className="font-medium text-gray-900">還沒有習慣</p>
-          <p className="text-sm text-gray-500">點右上角 ＋ 建立第一個習慣</p>
+          <p className="text-sm text-gray-500">點右上角 ＋ 建立第一個習慣，或從範本快速開始</p>
+          <button
+            type="button"
+            onClick={() => navigate('/onboarding')}
+            className="min-h-11 rounded-xl bg-indigo-50 px-4 text-sm font-medium text-indigo-600 active:bg-indigo-100"
+          >
+            從範本快速開始
+          </button>
         </Card>
       ) : (
         <ul className="flex flex-col gap-3">
@@ -74,8 +91,13 @@ export function TodayPage() {
         </ul>
       )}
 
-      <QuickActions
-        item={entryItem}
+      <AmountEntrySheet
+        open={entryItem !== null}
+        habitName={entryItem?.habit.name ?? ''}
+        habitEmoji={entryItem?.habit.emoji ?? ''}
+        unit={entryItem?.habit.unit}
+        step={entryItem?.habit.step ?? 1}
+        decimal={entryItem?.habit.decimal ?? false}
         onClose={() => setEntryItem(null)}
         onRecord={(amount) => entryItem && void record(entryItem.habit.id, amount)}
       />

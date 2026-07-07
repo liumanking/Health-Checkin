@@ -11,3 +11,4 @@ export * from './template';
 export * from './achievement';
 export * from './summary';
 export * from './audit-log';
+export * from './export-envelope';
