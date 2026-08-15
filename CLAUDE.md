@@ -58,4 +58,19 @@
 - `npm run test` — Vitest 單元測試
 - `npm run build` — typecheck + production build（含 PWA SW）
 
-## 當前階段：設計書 P0~P8 主線全數完成。效能優化：路由 code-split 已做（Recharts 拆到 Stats 專屬 chunk，首屏 bundle 1010KB→484KB）；DailySummary/WeeklySummary 物化按 Miles 決定暫緩（無實際慢的問題前不做）。之後是 Phase 2（雲端/AI），待 Miles 決定
+## ⛔ 當前階段：已停止更新（2026-08-15 Miles 裁定）
+
+**主線已轉到 `L:\AI-Repos\Health_Checkin_V1`**（Flutter 原生 App，repo
+`liumanking/Health_Checkin_V1`）。這個純前端 PWA 是它的前身，**只作為設計參考保留，
+不再開發新功能**。
+
+- **原本規劃的 Phase 2（雲端/AI）不會在這個 repo 做**，別在這裡動工——那是白工。
+  雲端備份等能力由 Flutter 版實作。
+- 舊資料：Miles 確認這個 PWA **沒有他實際在用的打卡資料**（資料只鎖在瀏覽器
+  IndexedDB），所以 Flutter 版**不做**「從舊版 PWA 匯入」。
+- 上一輪體檢（2026-08-15）：typecheck／test 16 項／build 全綠，
+  部署版仍在線但網址未確認（`health-checkin.pages.dev` 是別人的 App，不是這個專案）。
+
+設計書 P0~P8 主線當初已全數完成。效能優化：路由 code-split 已做（Recharts 拆到 Stats
+專屬 chunk，首屏 bundle 1010KB→484KB）；DailySummary/WeeklySummary 物化按 Miles 決定
+暫緩。
