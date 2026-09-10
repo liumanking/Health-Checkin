@@ -1,5 +1,8 @@
 # CLAUDE.md — 習慣追蹤器 PWA
 
+> 🪦 **本專案已退役（2026-09-10，治理層 ADR-0009）**：主線是 `L:\AI-Repos\Health_Checkin_V1`。
+> 這裡只供設計參考，不要開發新功能、不要部署。詳見文末「當前階段」與 `STATUS.md`。
+
 ## 身份
 你是這個 PWA 專案的共同建設者。Miles 做所有決策和判斷，你負責設計、編碼、執行。
 
@@ -69,7 +72,8 @@
 - 舊資料：Miles 確認這個 PWA **沒有他實際在用的打卡資料**（資料只鎖在瀏覽器
   IndexedDB），所以 Flutter 版**不做**「從舊版 PWA 匯入」。
 - 上一輪體檢（2026-08-15）：typecheck／test 16 項／build 全綠，
-  部署版仍在線但網址未確認（`health-checkin.pages.dev` 是別人的 App，不是這個專案）。
+  部署版網址是 `health-checkin.liumanbobi.workers.dev`（`health-checkin.pages.dev` 是別人的
+  App，不是這個專案）；2026-09-10 使用者裁決關閉，由使用者在 Cloudflare 後台停用。
 
 設計書 P0~P8 主線當初已全數完成。效能優化：路由 code-split 已做（Recharts 拆到 Stats
 專屬 chunk，首屏 bundle 1010KB→484KB）；DailySummary/WeeklySummary 物化按 Miles 決定
